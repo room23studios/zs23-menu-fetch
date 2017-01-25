@@ -3,6 +3,14 @@
 import requests, json, sys
 from datetime import datetime
 
+class Style:
+    '''
+    There is REALLY no package that could print things bold...
+    So I have to hack this myself using this ugly thing.
+    '''
+    BOLD = '\033[1m'
+    END = '\033[0m'
+
 DAYS = {
     0: 'Poniedziałek',
     1: 'Wtorek',
@@ -12,8 +20,14 @@ DAYS = {
 }
 
 def get_meals_for_day(day):
-    for dish in data[day]:
-        print('\t' + dish)
+    meals = [
+        'Śniadanie',
+        'Obiad',
+        'Kolacja'
+    ]
+    
+    for dish in range(len(data[day])):
+        print('\t{}: {}'.format(Style.BOLD + meals[dish] + Style.END, data[day][dish]))
 
 
 if __name__ == '__main__':

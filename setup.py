@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='zs23_menu_fetch',
-    version='0.0.1',
+    version='1.0.0',
     description='Fetches menu in ZS23',
     url='https://github.com/room23studios/zs23_menu_fetch',
     author='Bravo555',

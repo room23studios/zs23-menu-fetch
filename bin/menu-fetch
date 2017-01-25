@@ -41,7 +41,7 @@ if __name__ == '__main__':
             if today > 4:
                 print('Jest weekend. Nie ma obiadu!')
             else:
-                print('Dzisiaj:')
+                print(Style.BOLD + 'Dzisiaj:' + Style.END)
                 get_meals_for_day(today)
         else:
             print('Nie rozpoznano argumentu')
@@ -49,7 +49,9 @@ if __name__ == '__main__':
     else:
         # And a loop for printing everything
         for day in range(len(DAYS)):
-            print(DAYS[day] + ':')
+            print(Style.BOLD + DAYS[day] + Style.END + ':')
             get_meals_for_day(day)
-            # extra line
             print()
+
+    # extra line
+    print()

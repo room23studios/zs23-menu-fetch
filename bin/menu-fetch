@@ -11,28 +11,31 @@ DAYS = {
     4: 'Piątek'
 }
 
+def get_meals_for_day(day):
+    for dish in data[day]:
+        print('\t' + dish)
+
+
 if __name__ == '__main__':
     # get data
     response = requests.get('http://ssh.autism-gamers.tk:5000/menu.json')
     data = json.loads(response.text)
-    
+
     if len(sys.argv) > 1:
         if sys.argv[1] == 'today':
-            weekday = datetime.today().weekday()
-            if weekday > 4:
+            today = datetime.today().weekday()
+            if today > 4:
                 print('Jest weekend. Nie ma obiadu!')
             else:
                 print('Dzisiaj:')
-                for dish in data[weekday]:
-                    print('\t' + dish)
+                get_meals_for_day(today)
         else:
             print('Nie rozpoznano argumentu')
         
     else:
         # And a loop for printing everything
-        for day in range(len(data)):
+        for day in range(len(DAYS)):
             print(DAYS[day] + ':')
-            for dish in data[day]:
-                print('\t' + dish)
+            get_meals_for_day(day)
             # extra line
             print()
